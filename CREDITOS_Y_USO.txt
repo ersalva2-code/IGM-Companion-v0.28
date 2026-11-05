@@ -1,0 +1,109 @@
+IGM COMPANION 0.28 — Windows x64 / .NET Framework 4.8
+
+NOVEDADES 0.28
+Al cargar un save, se lee tambien IGM_datos\catalogo_observado.jsonl situado junto
+al Companion instalado en Binaries\IGM. Se combinan alianzas por ID y sistemas por
+direccion/planeta, sin duplicados. Se conservan los nombres e iconos locales.
+Si el archivo no existe, se usa solo el save. Si no se puede leer, se informa.
+Los conflictos quedan sin seleccionar y excluidos de exportacion automatica.
+Leer y combinar no modifica los archivos de IGM; se escribe al pulsar Exportar.
+Con los dos saves y el catalogo aportados: 75 sistemas y 11 alianzas, 0 conflictos.
+Se reconocen los nombres de contexto activo Main, Expedition y Season.
+
+AUDITORIA Y COMPILACION
+Revisados los accesos a procesos, archivos y permisos. Solo se consulta el nombre
+del proceso NMS para impedir exportaciones con el juego abierto. Sin inyeccion,
+lectura de memoria del juego, red, descargador ni peticion de administrador.
+Se mantienen respaldos, deteccion de cambios y validacion de formatos.
+Compilacion determinista con rutas normalizadas: dos carpetas de compilacion
+distintas han producido exactamente el mismo EXE. Los fuentes incluyen revision
+de accesos, instrucciones y build.ps1 con opcion -VerifyRebuild.
+La interfaz Windows y la integracion real en tu instalacion siguen pendientes.
+Este nuevo EXE tiene un hash distinto a 0.27: necesita un analisis antivirus nuevo.
+No se ha medido ni se promete una reduccion de avisos para este archivo.
+
+INSTALACION / ACTUALIZACION
+Cierra No Man's Sky. Copia IGM_Companion.exe dentro de tu carpeta existente:
+Steam\steamapps\common\No Man's Sky\Binaries\IGM\
+Sustituye solo el EXE del Companion. NO borres ni reemplaces la carpeta IGM
+ni IGM_datos. Este paquete no contiene ni modifica el DLL de IGM.
+Los antiguos Languages.json, Symbols, PNG, ICO y config externos ya no son
+necesarios para 0.28; este ZIP no los incluye ni los elimina de tu instalacion.
+Si ejecutas el programa desde otro sitio, selecciona la carpeta del IGM instalado
+cuando te lo pida. No selecciones la carpeta de otra partida por accidente.
+
+USO
+Carga un save .hg, el archivo de datos real de Xbox PC o JSON decodificado.
+No selecciones el indice ni los metadatos del save. Los saves solo se leen.
+Revisa las alianzas, las estaciones propias y los registros seleccionados.
+Se conserva el editor y la galeria de 178 simbolos originales.
+"Esta es mi alianza" puede asignar la alianza elegida a tus estaciones propias
+sin ID confirmado, usando el propietario del save; no reasigna otros sistemas.
+Las cache de alianzas no son una verificacion del servidor.
+Exporta con el juego cerrado y vuelve a abrir NMS para cargar los cambios.
+La seleccion de propietario no se adivina si hay varios propietarios ambiguos.
+
+CAMBIOS
+- Lectura de estaciones Xbox ademas de Steam; JSON con BOM/espacios y datos ofuscados.
+- Lectura del contexto activo, incluido el de expedicion cuando existe.
+- Un registro defectuoso no invalida todas las entradas validas; se indica el recuento.
+- Retirado el catalogo fijo antiguo: se usan save y datos locales de IGM.
+- Recuperacion de nombres, colores e iconos actuales; nombres de usuario conservados.
+- Exportacion por fusion, sin duplicados al repetirla, con respaldo y sustitucion atomica.
+- Preserva favoritos, capturas, ajustes, nombres existentes y campos JSON desconocidos.
+- Rechaza escrituras de formatos que no entiende y cambios concurrentes detectados.
+- Recursos e idiomas reunidos en el EXE; sin instalador, descargador ni autoextraccion.
+- Codigo separado en lectura/modelos, almacenamiento, dibujo/recursos e interfaz.
+
+COMPATIBILIDAD
+Formatos de exportacion comprobados con los lectores de IGM 0.66 BETA 2.
+No se bloquea por numero de version de IGM. 0.67, 0.68 y posteriores podran usarlo
+si mantienen el mismo contrato de archivos; cambios de formato pueden requerir
+adaptar el Companion. No es una garantia para versiones futuras desconocidas.
+
+ARCHIVOS LEIDOS / ESCRITOS
+Lee el save que seleccionas y los datos locales de IGM.
+Exporta catalogo_observado.jsonl, nombres nuevos en exploracion.tsv e iconos BMP
+BGRA180 en iconos_alianzas. No modifica el save, NMS.exe ni DLL del juego.
+No reescribe gestion_sistemas.tsv (favoritos), ajustes.ini, capturas ni la paleta.
+Los originales de archivos reemplazados se guardan en IGM_datos\copias_companion.
+Preferencias y estilos: %LOCALAPPDATA%\ImperialGalacticMap, con copia .bak.
+Puede dejar carpetas vacias de respaldo si una exportacion se cancela antes de escribir.
+No usa red, telemetria, arranque automatico ni permisos de administrador.
+Solo consulta si NMS esta ejecutandose para impedir exportaciones con el juego abierto.
+
+VALIDACION Y ANTIVIRUS
+291 comprobaciones de logica, lectura y conservacion de datos superadas.
+Los lectores C reales de IGM 0.66 aceptan las exportaciones de prueba.
+Probado con un save real decodificado de Xbox: 35 sistemas, 33 estaciones propias.
+Compilado para Windows x64, sin ofuscador, empaquetador ejecutable ni DLL nativa propia.
+La interfaz no ha podido ejecutarse aqui: requiere prueba en Windows, incluido el
+editor y la exportacion completa con tu instalacion. No hay escaneo nuevo de VirusTotal.
+Estas mejoras no garantizan cero detecciones. El ejecutable no esta firmado digitalmente.
+Los fuentes de este Companion se entregan aparte; no incluyen los fuentes de IGM.
+
+ENGLISH
+Requires Windows x64 and .NET Framework 4.8. Replace only IGM_Companion.exe in
+No Man's Sky\Binaries\IGM. Keep IGM and IGM_datos. External resource files are no
+longer required. Saves are read-only. Export with NMS closed. Backups are retained.
+File formats were checked against IGM 0.66 BETA 2; future compatibility depends
+on those formats remaining compatible. Windows GUI testing and a fresh AV scan
+are still pending. This unsigned executable does not require administrator rights.
+
+CREDITOS / DERECHOS
+Companion, interfaz y lector: proyecto Imperial Galactic Map.
+Este Companion usa bibliotecas del sistema .NET Framework; no incorpora MinHook,
+inyector, proxy XInput, MBINCompiler ni el DLL del mod.
+Glifos: atlas heredado del proyecto, con formas de NMS Glyphs atribuidas a
+Hello Games y Stephan van der Feest (2017). Referencia:
+https://nmsportals.github.io/fonts/NMS-Glyphs-Mono.ttf
+No se afirma licencia OFL ni autoria original de esos glifos.
+Simbolos aportados por el usuario: wh40k-icon-master.zip,
+commit 0374c01aae5b426abc72c3c4096542805519c717.
+Autores indicados: shitake (molingyu), farvig (bakadesign.dk).
+No se encontro LICENSE en el archivo original; no se afirma licencia libre.
+Warhammer y los emblemas asociados pertenecen a sus respectivos titulares.
+No se distribuyen partidas personales, NMS.exe ni fuentes internos de IGM.
+
+SHA256 IGM_Companion.exe:
+8e6318f40c6f5b9235d7211abcb8fe600e856cdb5db6c962665a3a4bfb66a161

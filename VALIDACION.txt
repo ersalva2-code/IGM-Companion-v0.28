@@ -1,0 +1,18 @@
+IGM Companion 0.28
+
+291 C# regression checks passed on Mono (not a Windows GUI run).
+15 merge/audit checks passed for each supplied save plus the supplied catalogue.
+Both real merges: 75 distinct system keys, 11 alliance IDs, 0 conflicts.
+Original saves and catalogue not modified. Personal data is not distributed.
+Actual IGM 0.66 BETA 2 C journal/exploration/BGRA180 reader checks passed.
+PE x64 GUI/CLR and 0.28.0.0 resource version verified.
+Same EXE hash from two separate build roots with deterministic compilation and
+path mapping, Roslyn 4.11.0 / net48 reference assemblies 1.0.3.
+Source/assembly access review: no P/Invoke methods, no network/process launch,
+no save/DLL writes; NMS process-name guard, explicit export and local preferences.
+
+Windows GUI testing, full user export/reload and fresh VirusTotal analysis remain
+pending. The EXE is unsigned. No antivirus detection reduction is claimed.
+PowerShell build script is provided but not executed under Windows here.
+
+EXE SHA256: 8e6318f40c6f5b9235d7211abcb8fe600e856cdb5db6c962665a3a4bfb66a161
